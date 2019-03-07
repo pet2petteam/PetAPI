@@ -19,10 +19,17 @@ enum class DateFormat : short {
 	YYYYMD = 5
 };
 
+enum class TimeFormat : short {
+	//TODO: make TimeFormat like DateFormat
+	Russia = 0,
+	USA = 1
+};
+
 enum class DTSeparator : char {
 	DOT = '.',
 	HYPHEN = '-',
-	SLASH = '/'
+	SLASH = '/',
+	COLON = ':'
 };
 
 struct Date {
@@ -31,14 +38,27 @@ struct Date {
 	int month;
 	int day;
 	
-public:
-	
 	Date(int y = 0, int m = 0, int d = 0);
 	Date(const Date & date);
 	~Date() = default;
 	
 	static Date currentDate();
 	std::string toString(DateFormat format, DTSeparator separator = DTSeparator::DOT);
+	
+};
+
+struct Time {
+	
+	int hour;
+	int minute;
+	int second;
+	
+	Time(int h = 0, int m = 0, int s = 0);
+	Time(const Time & time);
+	~Time() = default;
+	
+	static Time currentTime();
+	std::string toString(TimeFormat format);
 	
 };
 
