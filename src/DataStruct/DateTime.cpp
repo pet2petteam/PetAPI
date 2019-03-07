@@ -35,7 +35,7 @@ Date Date::fromByteBuffer(const Container::ByteBuffer & buffer, size_t from) {
 	if (buffer.empty()) return data;
 	if (buffer.size() < 12) return data;
 	if (buffer.size() - from < 12) return data;
-	if (buffer.size() >= from) return data;
+	if (buffer.size() <= from) return data;
 	
 	buffer.parseVariable<int>(from, data.year);
 	buffer.parseVariable<int>(from + 4, data.month);
@@ -125,7 +125,7 @@ Time Time::fromByteBuffer(const Container::ByteBuffer & buffer, size_t from) {
 	if (buffer.empty()) return time;
 	if (buffer.size() < 12) return time;
 	if (buffer.size() - from < 12) return time;
-	if (buffer.size() >= from) return time;
+	if (buffer.size() <= from) return time;
 	
 	buffer.parseVariable<int>(from, time.hour);
 	buffer.parseVariable<int>(from + 4, time.minute);
