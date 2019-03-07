@@ -95,13 +95,13 @@ Time Time::currentTime() {
 std::string Time::toString(TimeFormat format) {
 	switch (format) {
 	case TimeFormat::Russia:
-		return std::to_string(hour) + static_cast<char>(DTSeparator::COLON) +
-		        std::to_string(minute) + static_cast<char>(DTSeparator::COLON) +
-		        std::to_string(second);
+		return (hour < 10 ? "0" : "") + std::to_string(hour) + static_cast<char>(DTSeparator::COLON) +
+		        (minute < 10 ? "0" : "") + std::to_string(minute) + static_cast<char>(DTSeparator::COLON) +
+		        (second < 10 ? "0" : "") + std::to_string(second);
 	case TimeFormat::USA: break;
-		return std::to_string(hour > 12 ? hour - 12 : hour) + static_cast<char>(DTSeparator::COLON) +
-		        std::to_string(minute) + static_cast<char>(DTSeparator::COLON) +
-		        std::to_string(second) + (hour > 12 ? " pm" : " am");
+		return (hour < 10 ? "0" : "") + std::to_string(hour > 12 ? hour - 12 : hour) + static_cast<char>(DTSeparator::COLON) +
+		        (minute < 10 ? "0" : "") + std::to_string(minute) + static_cast<char>(DTSeparator::COLON) +
+		        (second < 10 ? "0" : "") + std::to_string(second) + (hour > 12 ? " pm" : " am");
 	}
 }
 

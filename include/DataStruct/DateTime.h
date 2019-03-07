@@ -1,6 +1,7 @@
 #ifndef DATETIME_H
 #define DATETIME_H
 
+#include <PetAPI_global.h>
 #include <string>
 
 #ifdef _WIN32
@@ -32,7 +33,7 @@ enum class DTSeparator : char {
 	COLON = ':'
 };
 
-struct Date {
+struct PETAPI Date {
 	
 	int year;
 	int month;
@@ -47,7 +48,7 @@ struct Date {
 	
 };
 
-struct Time {
+struct PETAPI Time {
 	
 	int hour;
 	int minute;
