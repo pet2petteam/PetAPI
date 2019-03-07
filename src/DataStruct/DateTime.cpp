@@ -30,6 +30,19 @@ Date Date::currentDate() {
 	return ret;
 }
 
+Date Date::fromByteBuffer(const Container::ByteBuffer & buffer, size_t from) {
+	Date data;
+	if (buffer.empty()) return data;
+	if (buffer.size() < 12) return data;
+	if (buffer.size() - from < 12) return data;
+	if (buffer.size() >= from) return data;
+	
+	buffer.parseVariable<int>(from, data.year);
+	buffer.parseVariable<int>(from + 4, data.month);
+	buffer.parseVariable<int>(from + 8, data.day);
+	return data;
+}
+
 std::string Date::toString(DateFormat format, DTSeparator separator) {
 	if (separator == DTSeparator::COLON) return "";
 	switch (format) {
@@ -64,6 +77,21 @@ std::string Date::toString(DateFormat format, DTSeparator separator) {
 	}
 }
 
+Container::ByteBuffer Date::toByteBuffer() {
+	Container::ByteBuffer buffer;
+	buffer.appendVariable<int>(year);
+	buffer.appendVariable<int>(month);
+	buffer.appendVariable<int>(day);
+	return buffer;
+}
+
+size_t Date::toByteBuffer(Container::ByteBuffer & buffer) {
+	buffer.appendVariable<int>(year);
+	buffer.appendVariable<int>(month);
+	buffer.appendVariable<int>(day);
+	return 12;
+}
+
 /*------------Time------------*/
 
 Time::Time(int h, int m, int s) {
@@ -92,6 +120,19 @@ Time Time::currentTime() {
 	return ret;
 }
 
+Time Time::fromByteBuffer(const Container::ByteBuffer & buffer, size_t from) {
+	Time time;
+	if (buffer.empty()) return time;
+	if (buffer.size() < 12) return time;
+	if (buffer.size() - from < 12) return time;
+	if (buffer.size() >= from) return time;
+	
+	buffer.parseVariable<int>(from, time.hour);
+	buffer.parseVariable<int>(from + 4, time.minute);
+	buffer.parseVariable<int>(from + 8, time.second);
+	return time;
+}
+
 std::string Time::toString(TimeFormat format) {
 	switch (format) {
 	case TimeFormat::Russia:
@@ -103,6 +144,21 @@ std::string Time::toString(TimeFormat format) {
 		        (minute < 10 ? "0" : "") + std::to_string(minute) + static_cast<char>(DTSeparator::COLON) +
 		        (second < 10 ? "0" : "") + std::to_string(second) + (hour > 12 ? " pm" : " am");
 	}
+}
+
+Container::ByteBuffer Time::toByteBuffer() {
+	Container::ByteBuffer buffer;
+	buffer.appendVariable<int>(hour);
+	buffer.appendVariable<int>(minute);
+	buffer.appendVariable<int>(second);
+	return buffer;
+}
+
+size_t Time::toByteBuffer(Container::ByteBuffer & buffer) {
+	buffer.appendVariable<int>(hour);
+	buffer.appendVariable<int>(minute);
+	buffer.appendVariable<int>(second);
+	return 12;
 }
 
 }

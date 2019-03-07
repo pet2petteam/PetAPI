@@ -4,9 +4,6 @@
 #include "PetAPI_global.h"
 #include "Container/ByteBuffer.h"
 
-#include <vector>
-#include <string>
-
 namespace PetAPI {
 
 struct File {

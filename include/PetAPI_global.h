@@ -7,4 +7,8 @@
 #  define PETAPI __declspec(dllimport)
 #endif
 
+#include <string>
+#include <cstdint>
+#include <vector>
+
 #endif // PETAPI_GLOBAL_H

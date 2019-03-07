@@ -3,10 +3,6 @@
 
 #include "PetAPI_global.h"
 
-#include <string>
-#include <cstdint>
-#include <vector>
-
 namespace PetAPI::Container {
 
 using byte = int8_t;
