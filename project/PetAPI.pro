@@ -21,17 +21,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 DESTDIR = $$PWD/../bin
 
-INCLUDEPATH += $$PWD/../include
-
-SOURCES += $$PWD/../src/Container/ByteBuffer.cpp
-SOURCES += $$PWD/../src/DataStruct/Message.cpp
-SOURCES += $$PWD/../src/DataStruct/DateTime.cpp
-
-HEADERS += $$PWD/../include/Container/ByteBuffer.h
-HEADERS += $$PWD/../include/DataStruct/Message.h
-HEADERS += $$PWD/../include/DataStruct/DateTime.h
-HEADERS += $$PWD/../include/PetAPI_global.h
-
 CONFIG(debug, debug|release) {
 	contains(QMAKE_HOST.arch, x86_64) {
 		TARGET = PetAPI_x64d
@@ -45,6 +34,17 @@ CONFIG(debug, debug|release) {
 		TARGET = PetAPI_x86
 	}
 }
+
+INCLUDEPATH += $$PWD/../include
+
+SOURCES += $$PWD/../src/Container/ByteBuffer.cpp
+SOURCES += $$PWD/../src/DataStruct/Message.cpp
+SOURCES += $$PWD/../src/DataStruct/DateTime.cpp
+
+HEADERS += $$PWD/../include/Container/ByteBuffer.h
+HEADERS += $$PWD/../include/DataStruct/Message.h
+HEADERS += $$PWD/../include/DataStruct/DateTime.h
+HEADERS += $$PWD/../include/PetAPI_global.h
 
 unix {
     target.path = /usr/lib

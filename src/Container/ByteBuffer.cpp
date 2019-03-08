@@ -45,7 +45,7 @@ bool ByteBuffer::slice(ByteBuffer & dest, size_t from, size_t to) const {
 	if (m_data.empty()) return false;
 	if (from == to) return false;
 	if (from > to) std::swap(from, to);
-	if (to >= m_data.size()) to = m_data.size() - 1;
+	if (to > m_data.size()) to = m_data.size();
 	
 	while (from < to) {
 		dest.append(m_data.at(from));
@@ -58,13 +58,68 @@ bool ByteBuffer::slice(std::string & dest, size_t from, size_t to) const {
 	if (m_data.empty()) return false;
 	if (from == to) return false;
 	if (from > to) std::swap(from, to);
-	if (to >= m_data.size()) to = m_data.size() - 1;
+	if (to > m_data.size()) to = m_data.size();
 	
 	while (from < to) {
 		dest.push_back(m_data.at(from));
 		++from;
 	}
 	return true;
+}
+
+ByteBuffer & ByteBuffer::operator+(const std::string & string) {
+	if (string.empty()) return *this;
+	append(string);
+	return *this;
+}
+
+ByteBuffer & ByteBuffer::operator+(const ByteBuffer & buffer) {
+	if (&buffer == this) return *this;
+	if (buffer.empty()) return *this;
+	append(buffer);
+	return *this;
+}
+
+ByteBuffer & ByteBuffer::operator+=(const std::string & string) {
+	if (string.empty()) return *this;
+	append(string);
+	return *this;
+}
+
+ByteBuffer & ByteBuffer::operator+=(const ByteBuffer & buffer) {
+	if (&buffer == this) return *this;
+	if (buffer.empty()) return *this;
+	append(buffer);
+	return *this;
+}
+
+ByteBuffer & ByteBuffer::operator=(const std::string & string) {
+	m_data.clear();
+	append(string);
+	return *this;
+}
+
+ByteBuffer & ByteBuffer::operator=(const ByteBuffer & buffer) {
+	if(&buffer == this) return *this;
+	m_data.clear();
+	append(buffer);
+	return *this;
+}
+
+bool ByteBuffer::operator==(const std::string & string) const {
+	return std::equal(m_data.begin(), m_data.end(), string.begin());
+}
+
+bool ByteBuffer::operator==(const ByteBuffer & buffer) const {
+	return std::equal(m_data.begin(), m_data.end(), buffer.m_data.begin());
+}
+
+bool ByteBuffer::operator!=(const std::string & string) const {
+	return !std::equal(m_data.begin(), m_data.end(), string.begin());
+}
+
+bool ByteBuffer::operator!=(const ByteBuffer & buffer) const {
+	return !std::equal(m_data.begin(), m_data.end(), buffer.m_data.begin());
 }
 
 }

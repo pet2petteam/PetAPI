@@ -63,6 +63,21 @@ public:
 		return (size == sizeT);
 	}
 	
+	ByteBuffer & operator+(const std::string & string);
+	ByteBuffer & operator+(const ByteBuffer & buffer);
+	
+	ByteBuffer & operator+=(const std::string & string);
+	ByteBuffer & operator+=(const ByteBuffer & buffer);
+	
+	ByteBuffer & operator=(const std::string & string);
+	ByteBuffer & operator=(const ByteBuffer & buffer);
+	
+	bool operator==(const std::string & string) const;
+	bool operator==(const ByteBuffer & buffer) const;
+	
+	bool operator!=(const std::string & string) const;
+	bool operator!=(const ByteBuffer & buffer) const;
+	
 };
 
 }
