@@ -92,6 +92,17 @@ size_t Date::toByteBuffer(ByteBuffer & buffer) {
 	return 12;
 }
 
+bool Date::operator==(const Date & date) {
+	if (date.year != year) return false;
+	if (date.month != month) return false;
+	if (date.day != day) return false;
+	return true;
+}
+
+bool Date::operator!=(const Date & date) {
+	return !operator==(date);
+}
+
 /*------------Time------------*/
 
 Time::Time(int h, int m, int s) {
@@ -159,6 +170,17 @@ size_t Time::toByteBuffer(ByteBuffer & buffer) {
 	buffer.appendVariable<int>(minute);
 	buffer.appendVariable<int>(second);
 	return 12;
+}
+
+bool Time::operator==(const Time & time) {
+	if (time.hour != hour) return false;
+	if (time.minute != minute) return false;
+	if (time.second != second) return false;
+	return true;
+}
+
+bool Time::operator!=(const Time & time) {
+	return !operator==(time);
 }
 
 }

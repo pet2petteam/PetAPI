@@ -75,6 +75,9 @@ struct PETAPI Date {
 	///
 	size_t toByteBuffer(ByteBuffer & buffer);
 	
+	bool operator==(const Date & date);
+	bool operator!=(const Date & date);
+	
 };
 
 struct PETAPI Time {
@@ -116,6 +119,9 @@ struct PETAPI Time {
 	/// \return - Written bytes number
 	///
 	size_t toByteBuffer(ByteBuffer & buffer);
+	
+	bool operator==(const Time & time);
+	bool operator!=(const Time & time);
 	
 };
 
