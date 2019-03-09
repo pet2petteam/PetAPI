@@ -40,10 +40,12 @@ INCLUDEPATH += $$PWD/include
 SOURCES += $$PWD/src/Container/ByteBuffer.cpp
 SOURCES += $$PWD/src/DataStruct/Message.cpp
 SOURCES += $$PWD/src/DataStruct/DateTime.cpp
+SOURCES += $$PWD/src/DataStruct/File.cpp
 
 HEADERS += $$PWD/include/Container/ByteBuffer.h
 HEADERS += $$PWD/include/DataStruct/Message.h
 HEADERS += $$PWD/include/DataStruct/DateTime.h
+HEADERS += $$PWD/include/DataStruct/File.h
 HEADERS += $$PWD/include/PetAPI_global.h
 
 unix {
