@@ -30,7 +30,7 @@ Date Date::currentDate() {
 	return ret;
 }
 
-Date Date::fromByteBuffer(const Container::ByteBuffer & buffer, size_t from) {
+Date Date::fromByteBuffer(const ByteBuffer & buffer, size_t from) {
 	Date data;
 	if (buffer.empty()) return data;
 	if (buffer.size() < 12) return data;
@@ -77,15 +77,15 @@ std::string Date::toString(DateFormat format, DTSeparator separator) {
 	}
 }
 
-Container::ByteBuffer Date::toByteBuffer() {
-	Container::ByteBuffer buffer;
+ByteBuffer Date::toByteBuffer() {
+	ByteBuffer buffer;
 	buffer.appendVariable<int>(year);
 	buffer.appendVariable<int>(month);
 	buffer.appendVariable<int>(day);
 	return buffer;
 }
 
-size_t Date::toByteBuffer(Container::ByteBuffer & buffer) {
+size_t Date::toByteBuffer(ByteBuffer & buffer) {
 	buffer.appendVariable<int>(year);
 	buffer.appendVariable<int>(month);
 	buffer.appendVariable<int>(day);
@@ -120,7 +120,7 @@ Time Time::currentTime() {
 	return ret;
 }
 
-Time Time::fromByteBuffer(const Container::ByteBuffer & buffer, size_t from) {
+Time Time::fromByteBuffer(const ByteBuffer & buffer, size_t from) {
 	Time time;
 	if (buffer.empty()) return time;
 	if (buffer.size() < 12) return time;
@@ -146,15 +146,15 @@ std::string Time::toString(TimeFormat format) {
 	}
 }
 
-Container::ByteBuffer Time::toByteBuffer() {
-	Container::ByteBuffer buffer;
+ByteBuffer Time::toByteBuffer() {
+	ByteBuffer buffer;
 	buffer.appendVariable<int>(hour);
 	buffer.appendVariable<int>(minute);
 	buffer.appendVariable<int>(second);
 	return buffer;
 }
 
-size_t Time::toByteBuffer(Container::ByteBuffer & buffer) {
+size_t Time::toByteBuffer(ByteBuffer & buffer) {
 	buffer.appendVariable<int>(hour);
 	buffer.appendVariable<int>(minute);
 	buffer.appendVariable<int>(second);

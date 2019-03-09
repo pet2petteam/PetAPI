@@ -1,6 +1,6 @@
 #include "Container/ByteBuffer.h"
 
-namespace PetAPI::Container {
+namespace PetAPI {
 
 ByteBuffer::ByteBuffer() { m_data.clear(); }
 

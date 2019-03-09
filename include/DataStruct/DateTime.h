@@ -52,7 +52,7 @@ struct PETAPI Date {
 	/// \param from - Position to start reading
 	/// \return - Date object
 	///
-	static Date fromByteBuffer(const Container::ByteBuffer & buffer, size_t from = 0);
+	static Date fromByteBuffer(const ByteBuffer & buffer, size_t from = 0);
 	
 	///
 	/// \brief toString - Convert date to string
@@ -66,14 +66,14 @@ struct PETAPI Date {
 	/// \brief toByteBuffer - Convert date to byteBuffer. Append 12 bytes to buffer
 	/// \return - Buffer with date data
 	///
-	Container::ByteBuffer toByteBuffer();
+	ByteBuffer toByteBuffer();
 	
 	///
 	/// \brief toByteBuffer - Convert date to byteBuffer. Append 12 bytes to buffer
 	/// \param buffer - Dest buffer
 	/// \return - Written bytes number
 	///
-	size_t toByteBuffer(Container::ByteBuffer & buffer);
+	size_t toByteBuffer(ByteBuffer & buffer);
 	
 };
 
@@ -95,7 +95,7 @@ struct PETAPI Time {
 	/// \param from - Position to start reading
 	/// \return - Time object
 	///
-	static Time fromByteBuffer(const Container::ByteBuffer & buffer, size_t from = 0);
+	static Time fromByteBuffer(const ByteBuffer & buffer, size_t from = 0);
 	
 	///
 	/// \brief toString - Convert time to string
@@ -108,14 +108,14 @@ struct PETAPI Time {
 	/// \brief toByteBuffer - Convert time to byteBuffer. Append 12 bytes to buffer
 	/// \return - Buffer with time data
 	///
-	Container::ByteBuffer toByteBuffer();
+	ByteBuffer toByteBuffer();
 	
 	///
 	/// \brief toByteBuffer - Convert time to byteBuffer. Append 12 bytes to buffer
 	/// \param buffer - Dest buffer
 	/// \return - Written bytes number
 	///
-	size_t toByteBuffer(Container::ByteBuffer & buffer);
+	size_t toByteBuffer(ByteBuffer & buffer);
 	
 };
 

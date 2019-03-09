@@ -11,8 +11,8 @@ File::File() {
 	fileData.clear();
 }
 
-Container::ByteBuffer File::toByteBuffer() {
-	Container::ByteBuffer buffer;
+ByteBuffer File::toByteBuffer() {
+	ByteBuffer buffer;
 	
 	buffer.appendVariable<uint64_t>(fileName.size());
 	buffer.append(fileName);
@@ -30,7 +30,7 @@ Message::Message() {
 	m_files.clear();
 }
 
-Message::Message(const Container::ByteBuffer & bytesData) {
+Message::Message(const ByteBuffer & bytesData) {
 	uint64_t tLength = 0;
 	uint64_t fNumber = 0;
 	
@@ -53,10 +53,10 @@ Message::Message(const Container::ByteBuffer & bytesData) {
 	
 }
 
-Message Message::fromByteBuffer(const Container::ByteBuffer & data) { return Message(data); }
+Message Message::fromByteBuffer(const ByteBuffer & data) { return Message(data); }
 
-Container::ByteBuffer Message::toByteBuffer() {
-	Container::ByteBuffer messByteBuffer;
+ByteBuffer Message::toByteBuffer() {
+	ByteBuffer messByteBuffer;
 	
 	messByteBuffer.appendVariable<uint64_t>(m_text.size());
 	messByteBuffer.appendVariable<uint64_t>(m_files.size());
@@ -83,7 +83,7 @@ void Message::setText(const std::string & text) {
 
 const std::string & Message::getText() const { return m_text; }
 
-void Message::appendFile(const std::string & fileName, const Container::ByteBuffer & fileData) {
+void Message::appendFile(const std::string & fileName, const ByteBuffer & fileData) {
 	if (fileName.empty()) return;
 	if (fileData.empty()) return;
 	

@@ -3,7 +3,7 @@
 
 #include "PetAPI_global.h"
 
-namespace PetAPI::Container {
+namespace PetAPI {
 
 using byte = int8_t;
 
